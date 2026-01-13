@@ -1,5 +1,13 @@
-import { QueryClientProvider } from "@tanstack/react-query"
-import { queryClient } from "./../lib/queryClient"
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query"
+
+const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      retry: 1,
+      staleTime: 60_000,
+    },
+  },
+})
 
 export function Providers({ children }: { children: React.ReactNode }) {
   return (
